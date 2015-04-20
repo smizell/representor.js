@@ -1,0 +1,14 @@
+# Ignore dependency directory on github.
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
+
+# Ignore ES5 source directory on github.
+# http://mammal.io/articles/using-es6-today/#getting-started
+lib
+
+# Ignore JetBrains IDE directory on github.
+# https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
+.idea
+
+# Ignore .DS_store files (Desktop Services Store files on Mac OS X)
+.DS_Store
