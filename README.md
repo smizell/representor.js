@@ -38,7 +38,7 @@ representor.links.add(function(link) {
 ### Adding Forms
 
 ```javascript
-representor.forms.add((form) => {
+representor.forms.add(function(form) {
   form.name = 'change-password';
   form.href = 'http://example.com/user/2/password';
   form.method = 'POST';
