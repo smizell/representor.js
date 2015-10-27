@@ -20,7 +20,7 @@ var representor = new Representor;
 
 ### Adding Attributes
 
-The `attributes` property is a JavaScript object.
+The `attributes` property is a JavaScript object literal.
 
 ```javascript
 representor.attributes.email = 'john@example.com';
@@ -29,48 +29,48 @@ representor.attributes.email = 'john@example.com';
 ### Adding links
 
 ```javascript
-representor.links.add(function(link) {
-  link.rel = 'next';
-  link.href = 'http://example.com/users/2';
+representor.links.add({
+  rel: 'next',
+  href: 'http://example.com/users/2',
 });
 ```
 
 ### Adding Forms
 
 ```javascript
-representor.forms.add(function(form) {
-  form.name = 'change-password';
-  form.href = 'http://example.com/user/2/password';
-  form.method = 'POST';
+let changePasswordForm = representor.forms.add({
+  name: 'change-password',
+  href: 'http://example.com/user/2/password',
+  method: 'POST',
+});
 
-  form.fields.add(function(field) {
-    field.name = 'password';
-    field.value = 'foobar';
-  });
+form.fields.add({
+  name: 'password',
+  value: 'foobar',
 });
 ```
 
 ### Adding Embedded Representors
 
 ```javascript
-representor.embeddeds.add(function(embedded) {
-  embedded.rel = 'next';
-  embedded.href = 'http://example.com/users/2';
+let embedded = representor.embeddeds.add({
+  rel: 'next',
+  href: 'http://example.com/users/2',
+});
 
-  embedded.links.add(function(link) {
-    link.rel = 'next';
-    link.href = 'http://example.com/users/2';
-  });
+embedded.links.add({
+  rel: 'next',
+  href: 'http://example.com/users/2',
+});
 
-  embedded.forms.add(function(form) {
-    form.name = 'change-password';
-    form.href = 'http://example.com/user/2/password';
-    form.method = 'POST';
+let changePasswordForm = embedded.forms.add({
+  name: 'change-password',
+  href: 'http://example.com/user/2/password',
+  method: 'POST',
+});
 
-    form.fields.add(function(field) {
-      field.name = 'password';
-      field.value = 'foobar';
-    });
-  });
-})
+changePasswordForm.fields.add(function(field) {
+  name: 'password',
+  value: 'foobar',
+});
 ```
