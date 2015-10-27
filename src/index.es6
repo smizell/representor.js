@@ -1,3 +1,3 @@
-import { Representor } from './representor';
+import {Representor} from './representor';
 
-export default { Representor };
+export default {Representor};

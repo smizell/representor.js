@@ -1,6 +1,6 @@
-import { expect } from 'chai';
+import {expect} from 'chai';
 
-import { Fields } from '../fields';
+import {Fields} from '../fields';
 
 describe('Fields', () => {
   context('when initialized', () => {
@@ -24,9 +24,9 @@ describe('Fields', () => {
 
     context('when adding a field', () => {
       before(() => {
-        fields.add((field) => {
-          field.name = 'email';
-          field.href = 'john@example.com';
+        fields.add({
+          name: 'email',
+          value: 'john@example.com',
         });
       });
 
@@ -47,9 +47,9 @@ describe('Fields', () => {
       var field;
 
       before(() => {
-        fields.add((field) => {
-          field.name = 'email';
-          field.value = 'john@example.com';
+        fields.add({
+          name: 'email',
+          value: 'john@example.com',
         });
 
         field = fields.getByName('email');

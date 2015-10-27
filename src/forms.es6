@@ -1,14 +1,14 @@
-import { Fields } from './fields';
+import {Fields} from './fields';
 
 export class Forms {
   constructor() {
     this.forms = [];
   }
 
-  add(callback) {
-    var form = new Form;
-    callback(form);
+  add(formAttributes) {
+    var form = new Form(formAttributes);
     this.forms.push(form);
+    return form;
   }
 
   getByName(name) {
@@ -21,7 +21,7 @@ export class Forms {
 }
 
 export class Form {
-  constructor(name, href, method) {
+  constructor({name, href, method}) {
     this.name = name
     this.href = href;
     this.method = method;

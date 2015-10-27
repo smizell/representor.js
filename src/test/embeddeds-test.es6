@@ -1,8 +1,8 @@
-import { expect } from 'chai';
+import {expect} from 'chai';
 
-import { Embeddeds } from '../embeddeds';
-import { Forms } from '../forms';
-import { Links } from '../links';
+import {Embeddeds} from '../embeddeds';
+import {Forms} from '../forms';
+import {Links} from '../links';
 
 describe('Embeddeds', () => {
   context('when initialized', () => {
@@ -26,9 +26,9 @@ describe('Embeddeds', () => {
 
     context('when adding an embedded', () => {
       before(() => {
-        embeddeds.add((embedded) => {
-          embedded.rel = 'next';
-          embedded.href = 'http://example.com/user/2';
+        embeddeds.add({
+          rel: 'next',
+          href: 'http://example.com/user/2',
         });
       });
 
@@ -49,9 +49,9 @@ describe('Embeddeds', () => {
       var embedded;
 
       before(() => {
-        embeddeds.add((embedded) => {
-          embedded.rel = 'next';
-          embedded.href = 'http://example.com/user/2';
+        embeddeds.add({
+          rel: 'next',
+          href: 'http://example.com/user/2',
         });
 
         embedded = embeddeds.getByRel('next');

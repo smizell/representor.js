@@ -1,6 +1,6 @@
-import { expect } from 'chai';
+import {expect} from 'chai';
 
-import { Forms } from '../forms';
+import {Forms} from '../forms';
 
 describe('Forms', () => {
   context('when initialized', () => {
@@ -24,10 +24,10 @@ describe('Forms', () => {
 
     context('when adding a form', () => {
       before(() => {
-        forms.add((form) => {
-          form.name = 'change-password';
-          form.href = 'http://example.com/user/2/password';
-          form.method = 'POST';
+        forms.add({
+          name: 'change-password',
+          href: 'http://example.com/user/2/password',
+          method: 'POST',
         });
       });
 
@@ -45,27 +45,27 @@ describe('Forms', () => {
     });
 
     context('when looking for an existing forms', () => {
-      var form;
+      var changePasswordForm;
 
       before(() => {
-        forms.add((form) => {
-          form.name = 'change-password';
-          form.href = 'http://example.com/user/2/password';
-          form.method = 'POST';
-
-          form.fields.add((field) => {
-            field.name = 'password';
-            field.value = 'foobar';
-          });
+        let form = forms.add({
+          name: 'change-password',
+          href: 'http://example.com/user/2/password',
+          method: 'POST',
         });
 
-        form = forms.getByName('change-password');
+        form.fields.add({
+          name: 'password',
+          value: 'foobar',
+        });
+
+        changePasswordForm = forms.getByName('change-password');
       });
 
       it('returns the correct form', () => {
-        expect(form.href).to.equal('http://example.com/user/2/password');
-        expect(form.method).to.equal('POST');
-        expect(form.fields.getByName('password').value).to.equal('foobar');
+        expect(changePasswordForm.href).to.equal('http://example.com/user/2/password');
+        expect(changePasswordForm.method).to.equal('POST');
+        expect(changePasswordForm.fields.getByName('password').value).to.equal('foobar');
       });
     });
   });

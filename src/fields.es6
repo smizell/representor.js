@@ -3,10 +3,10 @@ export class Fields {
     this.fields = [];
   }
 
-  add(callback) {
-    var field = new Field;
-    callback(field);
+  add(fieldAttributes) {
+    var field = new Field(fieldAttributes);
     this.fields.push(field);
+    return field;
   }
 
   getByName(name) {
@@ -19,7 +19,7 @@ export class Fields {
 }
 
 export class Field {
-  constructor(name, value) {
+  constructor({name, value}) {
     this.name = name;
     this.value = value;
   }

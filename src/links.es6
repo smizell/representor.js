@@ -3,10 +3,10 @@ export class Links {
     this.links = [];
   }
 
-  add(callback) {
-    var link = new Link;
-    callback(link);
+  add(linkAttributes) {
+    var link = new Link(linkAttributes);
     this.links.push(link);
+    return link;
   }
 
   getByRel(rel) {
@@ -16,11 +16,24 @@ export class Links {
       }
     }
   }
+
+  toValue() {
+    return this.links.map(link => {
+      return link.toValue();
+    });
+  }
 }
 
 export class Link {
-  constructor(rel, href) {
+  constructor({rel, href}) {
     this.rel = rel
     this.href = href;
+  }
+
+  toValue() {
+    return {
+      rel: this.rel,
+      href: this.href
+    };
   }
 }

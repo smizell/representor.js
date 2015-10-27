@@ -1,7 +1,7 @@
-import { expect } from 'chai';
+import {expect} from 'chai';
 
 import index from '../index';
-import { Representor } from '../representor';
+import {Representor} from '../representor';
 
 describe('Index', () => {
   it('exports the Representor', () => {

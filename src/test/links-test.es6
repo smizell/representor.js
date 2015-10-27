@@ -1,62 +1,116 @@
-import { expect } from 'chai';
+import {expect} from 'chai';
 
-import { Links } from '../links';
+import {Links, Link} from '../links';
 
-describe('Links', () => {
-  context('when initialized', () => {
-    var links;
+describe('Links Library', () => {
+  describe('Links', () => {
+    context('when initialized', () => {
+      var links;
 
-    before(() => {
-      links = new Links;
+      before(() => {
+        links = new Links;
+      });
+
+      it('should have a links array', () => {
+        expect(Array.isArray(links.links)).to.be.true;
+      });
     });
 
-    it('should have a links array', () => {
-      expect(Array.isArray(links.links)).to.be.true;
+    describe('#add', () => {
+      var links;
+
+      before(() => {
+        links = new Links;
+      });
+
+      context('when adding a link', () => {
+        let link;
+
+        before(() => {
+          link = links.add({
+            rel: 'next',
+            href: 'http://example.com/user/2'
+          });
+        });
+
+        it('adds a link to the links instance', () => {
+          expect(links.links.length).to.equal(1);
+        });
+
+        it('has the correct values', () => {
+          expect(link.rel).to.equal('next');
+          expect(link.href).to.equal('http://example.com/user/2');
+        });
+      });
+    });
+
+    describe('#getByRel', () => {
+      var links;
+
+      before(() => {
+        links = new Links;
+      });
+
+      context('when looking for an existing links', () => {
+        let nextLink;
+
+        before(() => {
+          let link = links.add({
+            rel: 'next',
+            href: 'http://example.com/user/2'
+          });
+
+          nextLink = links.getByRel('next');
+        });
+
+        it('returns the correct link', () => {
+          expect(nextLink.href).to.equal('http://example.com/user/2');
+        });
+      });
+    });
+
+    describe('#toValue', () => {
+      var linksValue;
+
+      before(() => {
+        var links = new Links;
+
+        links.add({
+          rel: 'next',
+          href: 'http://example.com/user/2'
+        });
+
+        linksValue = links.toValue();
+      });
+
+      it('returns an array of links', () => {
+        expect(linksValue).to.deep.equal([
+          {
+            rel: 'next',
+            href: 'http://example.com/user/2'
+          }
+        ]);
+      });
     });
   });
 
-  describe('#add', () => {
-    var links;
-
-    before(() => {
-      links = new Links;
-    });
-
-    context('when adding a link', () => {
-      before(() => {
-        links.add((link) => {
-          link.rel = 'next';
-          link.href = 'http://example.com/user/2';
-        });
-      });
-
-      it('adds a link to the links instance', () => {
-        expect(links.links.length).to.equal(1);
-      });
-    });
-  });
-
-  describe('#getByRel', () => {
-    var links;
-
-    before(() => {
-      links = new Links;
-    });
-
-    context('when looking for an existing links', () => {
-      var link;
+  describe('Link', () => {
+    describe('#toValue', () => {
+      let linkValue;
 
       before(() => {
-        links.add((link) => {
-          link.rel = 'next';
-          link.href = 'http://example.com/user/2';
+        const link = new Link({
+          rel: 'next',
+          href: 'http://example.com/user/2'
         });
-
-        link = links.getByRel('next');
+        linkValue = link.toValue();
       });
 
-      it('returns the correct link', () => {
-        expect(link.href).to.equal('http://example.com/user/2');
+      it('converts the link to an object', () => {
+        expect(linkValue).to.deep.equal({
+          rel: 'next',
+          href: 'http://example.com/user/2'
+        })
       });
     });
   });

@@ -1,15 +1,15 @@
-import { Forms } from './forms';
-import { Links } from './links';
+import {Forms} from './forms';
+import {Links} from './links';
 
 export class Embeddeds {
   constructor() {
     this.embeddeds = [];
   }
 
-  add(callback) {
-    var embedded = new Embedded;
-    callback(embedded);
+  add(embeddedAttributes) {
+    var embedded = new Embedded(embeddedAttributes);
     this.embeddeds.push(embedded);
+    return embedded;
   }
 
   getByRel(rel) {
@@ -22,7 +22,7 @@ export class Embeddeds {
 }
 
 export class Embedded {
-  constructor(rel, href) {
+  constructor({rel, href}) {
     this.rel = rel
     this.href = href;
     this.attributes = {};

@@ -1,6 +1,6 @@
-import { Embeddeds } from './embeddeds';
-import { Forms } from './forms';
-import { Links } from './links';
+import {Embeddeds} from './embeddeds';
+import {Forms} from './forms';
+import {Links} from './links';
 
 export class Representor {
   constructor() {
