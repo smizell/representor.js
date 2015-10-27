@@ -16,11 +16,22 @@ export class Fields {
       }
     }
   }
+
+  toValue() {
+    return this.fields.map(field => field.toValue());
+  }
 }
 
 export class Field {
   constructor({name, value}) {
     this.name = name;
     this.value = value;
+  }
+
+  toValue() {
+    return {
+      name: this.name,
+      value: this.value,
+    };
   }
 }

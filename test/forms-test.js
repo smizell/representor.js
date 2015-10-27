@@ -69,4 +69,40 @@ describe('Forms', () => {
       });
     });
   });
+
+  describe('#toValue', () => {
+    let formValue;
+
+    before(() => {
+      const forms = new Forms;
+      const changePasswordForm = forms.add({
+        name: 'change-password',
+        href: 'http://example.com/user/2/password',
+        method: 'POST',
+      });
+
+      changePasswordForm.fields.add({
+        name: 'password',
+        value: 'foobar',
+      });
+
+      formValue = forms.toValue();
+    });
+
+    it('converts the form to an array', () => {
+      expect(formValue).to.deep.equal([
+        {
+          name: 'change-password',
+          href: 'http://example.com/user/2/password',
+          method: 'POST',
+          fields: [
+            {
+              name: 'password',
+              value: 'foobar',
+            },
+          ],
+        },
+      ]);
+    });
+  });
 });

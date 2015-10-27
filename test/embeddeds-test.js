@@ -68,4 +68,30 @@ describe('Embeddeds', () => {
       });
     });
   });
+
+  describe('#toValue', () => {
+    let embeddedValue;
+
+    before(() => {
+      const embeddeds = new Embeddeds;
+      embeddeds.add({
+        rel: 'next',
+        href: 'http://example.com/user/2',
+      });
+      embeddedValue = embeddeds.toValue();
+    });
+
+    it('converts to an embedded array', () => {
+      expect(embeddedValue).to.deep.equal([
+        {
+          rel: 'next',
+          href: 'http://example.com/user/2',
+          attributes: {},
+          links: [],
+          forms: [],
+          embeddeds: [],
+        },
+      ]);
+    });
+  });
 });

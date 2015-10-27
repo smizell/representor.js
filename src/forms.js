@@ -18,6 +18,10 @@ export class Forms {
       }
     }
   }
+
+  toValue() {
+    return this.forms.map(form => form.toValue());
+  }
 }
 
 export class Form {
@@ -26,5 +30,14 @@ export class Form {
     this.href = href;
     this.method = method;
     this.fields = new Fields;
+  }
+
+  toValue() {
+    return {
+      name: this.name,
+      href: this.href,
+      method: this.method,
+      fields: this.fields.toValue(),
+    };
   }
 }

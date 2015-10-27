@@ -19,6 +19,10 @@ export class Embeddeds {
       }
     }
   }
+
+  toValue() {
+    return this.embeddeds.map(embedded => embedded.toValue());
+  }
 }
 
 export class Embedded {
@@ -29,5 +33,16 @@ export class Embedded {
     this.embeddeds = new Embeddeds;
     this.forms = new Forms;
     this.links = new Links;
+  }
+
+  toValue() {
+    return {
+      rel: this.rel,
+      href: this.href,
+      attributes: this.attributes,
+      embeddeds: this.embeddeds.toValue(),
+      forms: this.forms.toValue(),
+      links: this.links.toValue(),
+    };
   }
 }

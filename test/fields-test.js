@@ -61,4 +61,26 @@ describe('Fields', () => {
       });
     });
   });
+
+  describe('#toValue', () => {
+    let fieldValue;
+
+    before(() => {
+      const fields = new Fields;
+      fields.add({
+        name: 'email',
+        value: 'john@example.com',
+      });
+      fieldValue = fields.toValue();
+    });
+
+    it('converts the fields to an array', () => {
+      expect(fieldValue).to.deep.equal([
+        {
+          name: 'email',
+          value: 'john@example.com',
+        },
+      ]);
+    });
+  });
 });

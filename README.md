@@ -74,3 +74,68 @@ changePasswordForm.fields.add(function(field) {
   value: 'foobar',
 });
 ```
+
+### Converting to an Object Literal
+
+Each object has its own `#toValue` function that may be called to output an object literal.
+
+```js
+const rep = new Representor;
+
+rep.links.add({
+  rel: 'next',
+  href: 'http://example.com/user/2',
+});
+
+const changePasswordForm = rep.forms.add({
+  name: 'change-password',
+  href: 'http://example.com/user/2/password',
+  method: 'POST',
+});
+
+changePasswordForm.fields.add({
+  name: 'password',
+  value: 'foobar',
+});
+
+rep.embeddeds.add({
+  rel: 'next',
+  href: 'http://example.com/user/3',
+});
+
+repValue = rep.toValue();
+
+// repValue above deep equals objLiteral here
+const objLiteral = {
+  attributes: {},
+  links: [
+    {
+      rel: 'next',
+      href: 'http://example.com/user/2',
+    },
+  ],
+  forms: [
+    {
+      name: 'change-password',
+      href: 'http://example.com/user/2/password',
+      method: 'POST',
+      fields: [
+        {
+          name: 'password',
+          value: 'foobar',
+        }
+      ]
+    },
+  ],
+  embeddeds: [
+    {
+      rel: 'next',
+      href: 'http://example.com/user/3',
+      attributes: {},
+      links: [],
+      forms: [],
+      embeddeds: [],
+    },
+  ],
+};
+```
