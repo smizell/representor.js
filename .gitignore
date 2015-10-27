@@ -12,3 +12,5 @@ lib
 
 # Ignore .DS_store files (Desktop Services Store files on Mac OS X)
 .DS_Store
+
+.eslintcache

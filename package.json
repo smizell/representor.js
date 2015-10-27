@@ -3,12 +3,6 @@
   "version": "0.0.1",
   "description": "Hypermedia representor",
   "main": "lib/",
-  "scripts": {
-    "compile": "babel src/ --out-dir lib/",
-    "prepublish": "npm run compile",
-    "pretest": "npm run compile",
-    "test": "mocha lib/test --compilers js:babel/register"
-  },
   "keywords": [
     "representor",
     "hypermedia"
@@ -18,6 +12,18 @@
   "devDependencies": {
     "babel": "^5.1.10",
     "chai": "^2.2.0",
-    "mocha": "^2.2.4"
+    "mocha": "^2.2.4",
+    "peasant": "^0.5.2"
+  },
+  "dependencies": {
+    "babel-runtime": "^5.8.29"
+  },
+  "scripts": {
+    "cover": "peasant cover",
+    "lint": "peasant lint",
+    "peasant": "peasant",
+    "ci": "peasant -s lint test build",
+    "prepublish": "npm run ci",
+    "test": "peasant test"
   }
 }

@@ -1,12 +1,12 @@
 import {expect} from 'chai';
 
-import {Embeddeds} from '../embeddeds';
-import {Forms} from '../forms';
-import {Links} from '../links';
+import {Embeddeds} from '../src/embeddeds';
+import {Forms} from '../src/forms';
+import {Links} from '../src/links';
 
 describe('Embeddeds', () => {
   context('when initialized', () => {
-    var embeddeds;
+    let embeddeds;
 
     before(() => {
       embeddeds = new Embeddeds;
@@ -18,7 +18,7 @@ describe('Embeddeds', () => {
   });
 
   describe('#add', () => {
-    var embeddeds;
+    let embeddeds;
 
     before(() => {
       embeddeds = new Embeddeds;
@@ -39,14 +39,14 @@ describe('Embeddeds', () => {
   });
 
   describe('#getByRel', () => {
-    var embeddeds;
+    let embeddeds;
 
     before(() => {
       embeddeds = new Embeddeds;
     });
 
     context('when looking for an existing embeddeds', () => {
-      var embedded;
+      let embedded;
 
       before(() => {
         embeddeds.add({

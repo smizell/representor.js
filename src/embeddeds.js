@@ -7,13 +7,13 @@ export class Embeddeds {
   }
 
   add(embeddedAttributes) {
-    var embedded = new Embedded(embeddedAttributes);
+    const embedded = new Embedded(embeddedAttributes);
     this.embeddeds.push(embedded);
     return embedded;
   }
 
   getByRel(rel) {
-    for (let embedded of this.embeddeds) {
+    for (const embedded of this.embeddeds) {
       if (embedded.rel === rel) {
         return embedded;
       }
@@ -23,7 +23,7 @@ export class Embeddeds {
 
 export class Embedded {
   constructor({rel, href}) {
-    this.rel = rel
+    this.rel = rel;
     this.href = href;
     this.attributes = {};
     this.embeddeds = new Embeddeds;

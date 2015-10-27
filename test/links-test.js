@@ -1,11 +1,11 @@
 import {expect} from 'chai';
 
-import {Links, Link} from '../links';
+import {Links, Link} from '../src/links';
 
 describe('Links Library', () => {
   describe('Links', () => {
     context('when initialized', () => {
-      var links;
+      let links;
 
       before(() => {
         links = new Links;
@@ -17,7 +17,7 @@ describe('Links Library', () => {
     });
 
     describe('#add', () => {
-      var links;
+      let links;
 
       before(() => {
         links = new Links;
@@ -29,7 +29,7 @@ describe('Links Library', () => {
         before(() => {
           link = links.add({
             rel: 'next',
-            href: 'http://example.com/user/2'
+            href: 'http://example.com/user/2',
           });
         });
 
@@ -45,7 +45,7 @@ describe('Links Library', () => {
     });
 
     describe('#getByRel', () => {
-      var links;
+      let links;
 
       before(() => {
         links = new Links;
@@ -55,9 +55,9 @@ describe('Links Library', () => {
         let nextLink;
 
         before(() => {
-          let link = links.add({
+          links.add({
             rel: 'next',
-            href: 'http://example.com/user/2'
+            href: 'http://example.com/user/2',
           });
 
           nextLink = links.getByRel('next');
@@ -70,14 +70,14 @@ describe('Links Library', () => {
     });
 
     describe('#toValue', () => {
-      var linksValue;
+      let linksValue;
 
       before(() => {
-        var links = new Links;
+        const links = new Links;
 
         links.add({
           rel: 'next',
-          href: 'http://example.com/user/2'
+          href: 'http://example.com/user/2',
         });
 
         linksValue = links.toValue();
@@ -87,8 +87,8 @@ describe('Links Library', () => {
         expect(linksValue).to.deep.equal([
           {
             rel: 'next',
-            href: 'http://example.com/user/2'
-          }
+            href: 'http://example.com/user/2',
+          },
         ]);
       });
     });
@@ -101,7 +101,7 @@ describe('Links Library', () => {
       before(() => {
         const link = new Link({
           rel: 'next',
-          href: 'http://example.com/user/2'
+          href: 'http://example.com/user/2',
         });
         linkValue = link.toValue();
       });
@@ -109,8 +109,8 @@ describe('Links Library', () => {
       it('converts the link to an object', () => {
         expect(linkValue).to.deep.equal({
           rel: 'next',
-          href: 'http://example.com/user/2'
-        })
+          href: 'http://example.com/user/2',
+        });
       });
     });
   });

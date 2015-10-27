@@ -4,13 +4,13 @@ export class Links {
   }
 
   add(linkAttributes) {
-    var link = new Link(linkAttributes);
+    const link = new Link(linkAttributes);
     this.links.push(link);
     return link;
   }
 
   getByRel(rel) {
-    for (let link of this.links) {
+    for (const link of this.links) {
       if (link.rel === rel) {
         return link;
       }
@@ -26,14 +26,14 @@ export class Links {
 
 export class Link {
   constructor({rel, href}) {
-    this.rel = rel
+    this.rel = rel;
     this.href = href;
   }
 
   toValue() {
     return {
       rel: this.rel,
-      href: this.href
+      href: this.href,
     };
   }
 }

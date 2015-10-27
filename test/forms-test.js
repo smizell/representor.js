@@ -1,10 +1,10 @@
 import {expect} from 'chai';
 
-import {Forms} from '../forms';
+import {Forms} from '../src/forms';
 
 describe('Forms', () => {
   context('when initialized', () => {
-    var forms;
+    let forms;
 
     before(() => {
       forms = new Forms;
@@ -16,7 +16,7 @@ describe('Forms', () => {
   });
 
   describe('#add', () => {
-    var forms;
+    let forms;
 
     before(() => {
       forms = new Forms;
@@ -38,17 +38,17 @@ describe('Forms', () => {
   });
 
   describe('#getByName', () => {
-    var forms;
+    let forms;
 
     before(() => {
       forms = new Forms;
     });
 
     context('when looking for an existing forms', () => {
-      var changePasswordForm;
+      let changePasswordForm;
 
       before(() => {
-        let form = forms.add({
+        const form = forms.add({
           name: 'change-password',
           href: 'http://example.com/user/2/password',
           method: 'POST',

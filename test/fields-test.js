@@ -1,10 +1,10 @@
 import {expect} from 'chai';
 
-import {Fields} from '../fields';
+import {Fields} from '../src/fields';
 
 describe('Fields', () => {
   context('when initialized', () => {
-    var fields;
+    let fields;
 
     before(() => {
       fields = new Fields;
@@ -16,7 +16,7 @@ describe('Fields', () => {
   });
 
   describe('#add', () => {
-    var fields;
+    let fields;
 
     before(() => {
       fields = new Fields;
@@ -37,14 +37,14 @@ describe('Fields', () => {
   });
 
   describe('#getByName', () => {
-    var fields;
+    let fields;
 
     before(() => {
       fields = new Fields;
     });
 
     context('when looking for an existing fields', () => {
-      var field;
+      let field;
 
       before(() => {
         fields.add({

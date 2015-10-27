@@ -4,13 +4,13 @@ export class Fields {
   }
 
   add(fieldAttributes) {
-    var field = new Field(fieldAttributes);
+    const field = new Field(fieldAttributes);
     this.fields.push(field);
     return field;
   }
 
   getByName(name) {
-    for (let field of this.fields) {
+    for (const field of this.fields) {
       if (field.name === name) {
         return field;
       }

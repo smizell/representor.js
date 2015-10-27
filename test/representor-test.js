@@ -1,13 +1,13 @@
 import {expect} from 'chai';
 
-import {Embeddeds} from '../embeddeds';
-import {Forms} from '../forms';
-import {Links} from '../links';
-import {Representor} from '../representor';
+import {Embeddeds} from '../src/embeddeds';
+import {Forms} from '../src/forms';
+import {Links} from '../src/links';
+import {Representor} from '../src/representor';
 
 describe('Representor', () => {
   context('when initialized', () => {
-    var rep;
+    let rep;
 
     before(() => {
       rep = new Representor;
