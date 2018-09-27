@@ -10,20 +10,10 @@
   "author": "Stephen Mizell",
   "license": "MIT",
   "devDependencies": {
-    "babel": "^5.1.10",
     "chai": "^2.2.0",
-    "mocha": "^2.2.4",
-    "peasant": "^0.5.2"
-  },
-  "dependencies": {
-    "babel-runtime": "^5.8.29"
+    "mocha": "^2.2.4"
   },
   "scripts": {
-    "cover": "peasant cover",
-    "lint": "peasant lint",
-    "peasant": "peasant",
-    "ci": "peasant -s lint test build",
-    "prepublish": "npm run ci",
-    "test": "peasant test"
+    "test": "mocha test"
   }
 }

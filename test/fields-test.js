@@ -1,6 +1,5 @@
-import {expect} from 'chai';
-
-import {Fields} from '../src/fields';
+var expect = require('chai').expect;
+var Fields = require('../lib/fields').Fields;
 
 describe('Fields', () => {
   context('when initialized', () => {

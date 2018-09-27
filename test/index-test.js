@@ -1,7 +1,6 @@
-import {expect} from 'chai';
-
-import index from '../src/index';
-import {Representor} from '../src/representor';
+var expect = require('chai').expect;
+var index = require('../lib/index');
+var Representor = require('../lib/representor').Representor;
 
 describe('Index', () => {
   it('exports the Representor', () => {

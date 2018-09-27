@@ -1,6 +1,7 @@
-import {expect} from 'chai';
+var expect = require('chai').expect;
 
-import {Links, Link} from '../src/links';
+var Links = require('../lib/links').Links;
+var Link = require('../lib/links').Link;
 
 describe('Links Library', () => {
   describe('Links', () => {

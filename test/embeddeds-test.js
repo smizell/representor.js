@@ -1,8 +1,7 @@
-import {expect} from 'chai';
-
-import {Embeddeds} from '../src/embeddeds';
-import {Forms} from '../src/forms';
-import {Links} from '../src/links';
+var expect = require('chai').expect;
+var Embeddeds = require('../lib/embeddeds').Embeddeds;
+var Forms = require('../lib/forms').Forms;
+var Links = require('../lib/links').Links;
 
 describe('Embeddeds', () => {
   context('when initialized', () => {

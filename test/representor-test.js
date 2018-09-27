@@ -1,9 +1,9 @@
-import {expect} from 'chai';
+var expect = require('chai').expect;
 
-import {Embeddeds} from '../src/embeddeds';
-import {Forms} from '../src/forms';
-import {Links} from '../src/links';
-import {Representor} from '../src/representor';
+var Embeddeds = require('../lib/embeddeds').Embeddeds;
+var Forms = require('../lib/forms').Forms;
+var Links = require('../lib/links').Links;
+var Representor = require('../lib/representor').Representor;
 
 describe('Representor', () => {
   context('when initialized', () => {

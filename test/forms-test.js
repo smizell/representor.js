@@ -1,6 +1,5 @@
-import {expect} from 'chai';
-
-import {Forms} from '../src/forms';
+var expect = require('chai').expect;
+var Forms = require('../lib/forms').Forms;
 
 describe('Forms', () => {
   context('when initialized', () => {
